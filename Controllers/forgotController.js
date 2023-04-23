@@ -32,7 +32,7 @@ const forgotPassword = async (req, res) => {
     }
 
     // Create and save token
-     const token = jwt.sign({ email }, "s3cr3t", { expiresIn: "1h" });
+     const token = jwt.sign({ email }, process.env.JWT_SECRET || "s3cr3t", { expiresIn: "1h" });
     console.log(token)
     resetTokens.create({ email, token }, (err, result) => {
       if (err) {
@@ -86,7 +86,7 @@ const resetPassword = async (req, res) => {
   const token = req.params.token;
 
   // If the token is correct, prepare the password reset screen
-  jwt.verify(token, "s3cr3t", (err, decoded) => {
+  jwt.verify(token, process.env.JWT_SECRET || "s3cr3t", (err, decoded) => {
     if (err) {
       console.error(err);
       return res.status(400).send("Invalid or expired token.");
@@ -110,7 +110,7 @@ const createPassword = async (req, res) => {
   const confirmPassword = req.body.confirmPassword;
 
   // If token is correct, update password
-  jwt.verify(token, "s3cr3t", (err, decoded) => {
+  jwt.verify(token, process.env.JWT_SECRET || "s3cr3t", (err, decoded) => {
     if (err) {
       console.error(err);
       return res.status(400).send("Invalid or expired token.");

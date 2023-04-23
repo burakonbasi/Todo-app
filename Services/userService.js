@@ -46,7 +46,7 @@ const forgotPassword = async (email, callback) => {
           }
 
           // Create and save token
-          const token = jwt.sign({ email }, "s3cr3t", { expiresIn: "1h" });
+          const token = jwt.sign({ email },process.env.JWT_SECRET || "s3cr3t", { expiresIn: "1h" });
           console.log(token)
           resetTokens.create({ email, token }, (err, result) => {
             if (err) {
@@ -60,8 +60,8 @@ const forgotPassword = async (email, callback) => {
               port: 465,
               secure: true,
               auth: {
-                user: "info@oncreativemedia.com", // Sender e-mail address
-                pass: "Brk1995-fb", // Password of the sender email address
+                user: process.env.EMAIL_ADDRESS , // Sender e-mail address
+                pass: process.env.EMAIL_PASSWORD , // Password of the sender email address
               },
             });
 
@@ -97,7 +97,7 @@ const forgotPassword = async (email, callback) => {
 
 const createPassword = async (token, password, confirmPassword, callback) => {
     // If token is correct, update password
-    jwt.verify(token, "s3cr3t", (err, decoded) => {
+    jwt.verify(token, process.env.JWT_SECRET || "s3cr3t", (err, decoded) => {
       if (err) {
         console.error(err);
         return callback({ errMessage:"Invalid or expired token."});
