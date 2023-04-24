@@ -59,15 +59,15 @@ my test project for agentbook company
     ```npm install```
 
 - Create .env file in project directory like .env.example and enter required variables
-
+&nbsp;
 Example ;
-
-PORT="****"
-MONGO_URI="mongodb://localhost:27017/todo"
-JWT_SECRET="****"
-TOKEN_EXPIRE_TIME="60d"
-EMAIL_ADDRESS="****"
-EMAIL_PASSWORD="****"
+&nbsp;
+PORT="****"&nbsp;
+MONGO_URI="mongodb://localhost:27017/todo"&nbsp;
+JWT_SECRET="****"&nbsp;
+TOKEN_EXPIRE_TIME="60d"&nbsp;
+EMAIL_ADDRESS="****"&nbsp;
+EMAIL_PASSWORD="****"&nbsp;
 
 
 - Start the project:
