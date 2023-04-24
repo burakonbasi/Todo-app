@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "3cb85a1f-8039-48b4-bce9-8adc3fed668c",
+		"name": "Todo-App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16078659"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"name\":\"burak\",\n      \"surname\":\"onbasi\",\n      \"email\":\"burakonbasioglu@gmail.com\",\n      \"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n      \"email\":\"burakonbasioglu@gmail.com\",\n      \"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDQwNGY1YzQ4MDc2NTk5MDI4MzNjOCIsImVtYWlsIjoiYnVyYWtvbmJhc2lvZ2x1QGdtYWlsLmNvbSIsImlhdCI6MTY4MjE4MDk4OSwiZXhwIjoxNjg3MzY0OTg5fQ.PAAfRvbLmFUk1Oks8xijcGbJehGtbzGGEmZrn8_vK5o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/get-user?=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDQwNGY1YzQ4MDc2NTk5MDI4MzNjOCIsImVtYWlsIjoiYnVyYWtvbmJhc2lvZ2x1QGdtYWlsLmNvbSIsImlhdCI6MTY4MjE4MDk4OSwiZXhwIjoxNjg3MzY0OTg5fQ.PAAfRvbLmFUk1Oks8xijcGbJehGtbzGGEmZrn8_vK5o",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"get-user"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDQwNGY1YzQ4MDc2NTk5MDI4MzNjOCIsImVtYWlsIjoiYnVyYWtvbmJhc2lvZ2x1QGdtYWlsLmNvbSIsImlhdCI6MTY4MjE4MDk4OSwiZXhwIjoxNjg3MzY0OTg5fQ.PAAfRvbLmFUk1Oks8xijcGbJehGtbzGGEmZrn8_vK5o"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-User Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDQwNGY1YzQ4MDc2NTk5MDI4MzNjOCIsImVtYWlsIjoiYnVyYWtvbmJhc2lvZ2x1QGdtYWlsLmNvbSIsImlhdCI6MTY4MjE4MDk4OSwiZXhwIjoxNjg3MzY0OTg5fQ.PAAfRvbLmFUk1Oks8xijcGbJehGtbzGGEmZrn8_vK5o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/user/get-user?=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDQwNGY1YzQ4MDc2NTk5MDI4MzNjOCIsImVtYWlsIjoiYnVyYWtvbmJhc2lvZ2x1QGdtYWlsLmNvbSIsImlhdCI6MTY4MjE4MDk4OSwiZXhwIjoxNjg3MzY0OTg5fQ.PAAfRvbLmFUk1Oks8xijcGbJehGtbzGGEmZrn8_vK5o",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"get-user"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDQwNGY1YzQ4MDc2NTk5MDI4MzNjOCIsImVtYWlsIjoiYnVyYWtvbmJhc2lvZ2x1QGdtYWlsLmNvbSIsImlhdCI6MTY4MjE4MDk4OSwiZXhwIjoxNjg3MzY0OTg5fQ.PAAfRvbLmFUk1Oks8xijcGbJehGtbzGGEmZrn8_vK5o"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-User-Mail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NDQwNGY1YzQ4MDc2NTk5MDI4MzNjOCIsImVtYWlsIjoiYnVyYWtvbmJhc2lvZ2x1QGdtYWlsLmNvbSIsImlhdCI6MTY4MjE4MDk4OSwiZXhwIjoxNjg3MzY0OTg5fQ.PAAfRvbLmFUk1Oks8xijcGbJehGtbzGGEmZrn8_vK5o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"burakonbasioglu@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/get-user-with-email",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"get-user-with-email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot -Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"burakonbasioglu@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/forgot_password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"forgot_password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset-Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\":\"1\",\n    \"confirmPassword\":\"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user/reset/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1cmFrb25iYXNpb2dsdUBnbWFpbC5jb20iLCJpYXQiOjE2ODIzNzM3MjMsImV4cCI6MTY4MjM3NzMyM30.dJGikhpRXlTORoqP7w-vBHNNWR6rt9ipx7V_09zOhh4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user",
+						"reset",
+						"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJ1cmFrb25iYXNpb2dsdUBnbWFpbC5jb20iLCJpYXQiOjE2ODIzNzM3MjMsImV4cCI6MTY4MjM3NzMyM30.dJGikhpRXlTORoqP7w-vBHNNWR6rt9ipx7V_09zOhh4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

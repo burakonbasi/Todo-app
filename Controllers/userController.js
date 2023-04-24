@@ -3,6 +3,7 @@ const userService = require("../Services/userService");
 const auth = require("../Middlewares/auth");
 const jwt = require("jsonwebtoken");
 
+
 const register = async (req, res) => {
   const { name, surname, email, password } = req.body;
   if (!(name && surname && email && password))
@@ -80,28 +81,33 @@ const forgotPassword = async (req, res) => {
 };
 
 const resetPassword = async (req, res) => {
+ 
   const token = req.params.token;
 
+  // console.log("11", token);
+
   // If the token is correct, prepare the password reset screen
-  jwt.verify(token, "s3cr3t", (err, decoded) => {
-    if (err) {
-      console.error(err);
-      return res.status(400).send("Invalid or expired token.");
-    }
-    const email = decoded.email;
-    res.send(`
-      <h2>Password reset</h2>
-      <form action="/reset/${token}" method="POST">
-        <input type="password" name="password" placeholder="Your new password">
-        <input type="password" name="confirmPassword" placeholder="Your new password (again)">
-        <button type="submit">Send</button>
-      </form>
-    `);
-  });
+   jwt.verify(token, "s3cr3t", (err, decoded) => {
+     if (err) {
+       console.error(err);
+       return res.status(400).send("Invalid or expired token.");
+     }
+     const email = decoded.email;
+     res.send(`
+       <h2>Password reset</h2>
+       <form action="/user/reset/${token}" method="POST">
+         <input type="password" name="password" placeholder="Your new password">
+         <input type="password" name="confirmPassword" placeholder="Your new password (again)">
+         <button type="submit">Send</button>
+       </form>
+     `);
+   });
 }
 
 const createPassword = async (req, res) => {
-  const token = req.params.token;
+  const header = req.originalUrl;
+  const token = header.split("/")[3];
+  // const token = req.params.token;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
 
@@ -113,12 +119,14 @@ const createPassword = async (req, res) => {
   await userService.createPassword(token, password, confirmPassword, (err, result) => {
     if (err) return res.status(400).send(err);
 
-    return res
-      .status(200)
-      .send(`
-      <p>Your password has been successfully updated.</p>
-      <p><a href="/login">Click here to enter</a>.</p>
-    `);
+  return res
+  .status(200)
+  .send(`
+  <p>Your password has been successfully updated.</p>
+  <p><a href="/login">Click here to enter</a>.</p>
+`);
+
+    
   });
 
 }

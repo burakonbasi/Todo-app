@@ -3,6 +3,8 @@ const resetTokens = require("../Models/resetTokens");
 const { createRandomHexColor } = require("./helperMethods");
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
+const dotenv = require('dotenv');
+
 
 const register = async (user, callback) => {
   const newUser = userModel({ ...user, color:createRandomHexColor()});
@@ -53,7 +55,8 @@ const forgotPassword = async (email, callback) => {
               console.error(err);
               return callback({ errMessage: "An error occurred while saving the password reset token."});
             }
-
+            console.log(process.env.EMAIL_ADDRESS)
+            console.log(process.env.EMAIL_PASSWORD)
             // Send an email
             const transporter = nodemailer.createTransport({
               host: "smtp.hostinger.com",
@@ -86,7 +89,7 @@ const forgotPassword = async (email, callback) => {
             });
           });
         });
-
+        return callback(false);
   } catch (err) {
     return callback({
       errMessage: "Something went wrong",
@@ -96,6 +99,7 @@ const forgotPassword = async (email, callback) => {
 };
 
 const createPassword = async (token, password, confirmPassword, callback) => {
+  try {
     // If token is correct, update password
     jwt.verify(token, process.env.JWT_SECRET || "s3cr3t", (err, decoded) => {
       if (err) {
@@ -103,7 +107,7 @@ const createPassword = async (token, password, confirmPassword, callback) => {
         return callback({ errMessage:"Invalid or expired token."});
       }
       const email = decoded.email;
-  
+
       if (password !== confirmPassword) {
         return callback({ errMessage:"The passwords you entered do not match."});
       }
@@ -118,6 +122,14 @@ const createPassword = async (token, password, confirmPassword, callback) => {
     });
     
   });
+  return callback(false);
+  } catch (err) {
+    return callback({
+      errMessage: "Something went wrong",
+      details: err.message,
+    });
+  }
+
 }
 const getUser = async (id, callback) => {
   try {

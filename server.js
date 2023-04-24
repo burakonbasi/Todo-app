@@ -8,6 +8,7 @@ const boardRoute = require('./Routes/boardRoute');
 const listRoute = require('./Routes/listRoute');
 const cardRoute = require('./Routes/cardRoute');
 const auth = require('./Middlewares/auth');
+const bodyParser = require('body-parser');
 
 dotenv.config();
 const app = express();
@@ -19,6 +20,13 @@ app.use(express.json());
 
 auth.verifyToken.unless = unless;
 
+// for parsing application/json
+app.use(bodyParser.json()); 
+
+// for parsing application/xwww-
+app.use(bodyParser.urlencoded({ extended: true })); 
+//form-urlencoded
+
 app.use(
 	auth.verifyToken.unless({
 		path: [
@@ -26,11 +34,13 @@ app.use(
 			{ url: '/user/register', method: ['POST'] },
 			{ url: '/user/forgot', method: ['GET'] },
 			{ url: '/user/forgot_password', method: ['POST'] },
+			// { url: '/user/reset/', method: ['GET'] },
 			{ url: '/user/reset/:token', method: ['GET'] },
 			{ url: '/user/reset/:token', method: ['POST'] },
 		],
 	})
 );
+
 
 //MONGODB CONNECTION
 

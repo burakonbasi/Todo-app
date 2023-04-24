@@ -13,6 +13,7 @@ router.post("/login", userController.login);
 
 router.get("/forgot", userController.forgot);
 router.post("/forgot_password", userController.forgotPassword);
+// router.get("/reset", userController.resetPassword);
 router.get("/reset/:token", userController.resetPassword);
 router.post("/reset/:token", userController.createPassword);
 
